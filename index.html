@@ -85,10 +85,16 @@ button {
 </div>
 
 <script>
+const noBtn = document.getElementById("noBtn");
+
 function moveNo() {
-  const noBtn = document.getElementById("noBtn");
-  const maxX = 250;
-  const maxY = 40;
+  const card = document.querySelector(".card");
+
+  const cardRect = card.getBoundingClientRect();
+  const btnRect = noBtn.getBoundingClientRect();
+
+  const maxX = cardRect.width - btnRect.width;
+  const maxY = cardRect.height - btnRect.height;
 
   const x = Math.random() * maxX;
   const y = Math.random() * maxY;
@@ -96,6 +102,23 @@ function moveNo() {
   noBtn.style.left = x + "px";
   noBtn.style.top = y + "px";
 }
+
+// desktop: runs away when cursor gets close
+document.addEventListener("mousemove", (e) => {
+  const rect = noBtn.getBoundingClientRect();
+
+  const distance = Math.hypot(
+    e.clientX - (rect.left + rect.width / 2),
+    e.clientY - (rect.top + rect.height / 2)
+  );
+
+  if (distance < 80) {
+    moveNo();
+  }
+});
+
+// mobile: runs away on touch
+noBtn.addEventListener("touchstart", moveNo);
 
 function yesClicked() {
   document.body.innerHTML = `
@@ -115,17 +138,11 @@ function yesClicked() {
         Come here… I want kisses 😘😘😘
       </p>
 
-      <!-- GIPHY -->
       <iframe src="https://giphy.com/embed/3o7abKhOpu0NwenH3O"
-        width="300"
-        height="300"
-        frameBorder="0"
-        allowFullScreen>
+        width="300" height="300" frameBorder="0" allowFullScreen>
       </iframe>
 
-      <p style="margin-top:10px; font-size:16px;">
-        Forever my Valentine 💑
-      </p>
+      <p style="margin-top:10px;">Forever my Valentine 💑</p>
     </div>
   </div>`;
 }
