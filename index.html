@@ -1,209 +1,135 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>For My Kutti Male</title>
-    
-    <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&family=Poppins:wght@600&display=swap" rel="stylesheet">
-    
-    <style>
-        /* Modern Gradient Background */
-        body {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
-            background: linear-gradient(120deg, #f6d365 0%, #fda085 100%);
-            background: linear-gradient(to top, #fad0c4 0%, #ffd1ff 100%);
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
-            position: relative;
-        }
+<meta charset="UTF-8">
+<title>My Valentine 💖</title>
 
-        /* Floating Hearts Background Animation */
-        .hearts {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            z-index: -1;
-        }
-        
-        .hearts span {
-            position: absolute;
-            display: block;
-            width: 20px;
-            height: 20px;
-            background: rgba(255, 255, 255, 0.5);
-            animation: animate 25s linear infinite;
-            bottom: -150px;
-            clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 50% 75%, 18% 100%, 0% 38%);
-        }
+<style>
+body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #ff758c, #ff7eb3);
+  font-family: 'Poppins', sans-serif;
+}
 
-        .hearts span:nth-child(1){ left: 25%; width: 80px; height: 80px; animation-delay: 0s; }
-        .hearts span:nth-child(2){ left: 10%; width: 20px; height: 20px; animation-delay: 2s; }
-        .hearts span:nth-child(3){ left: 70%; width: 20px; height: 20px; animation-delay: 4s; }
-        .hearts span:nth-child(4){ left: 40%; width: 60px; height: 60px; animation-delay: 0s; background: rgba(255, 255, 255, 0.3); }
-        .hearts span:nth-child(5){ left: 65%; width: 20px; height: 20px; animation-delay: 0s; }
-        .hearts span:nth-child(6){ left: 75%; width: 110px; height: 110px; animation-delay: 3s; background: rgba(255, 255, 255, 0.4); }
+.card {
+  background: #fff;
+  padding: 35px 40px;
+  border-radius: 22px;
+  text-align: center;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+}
 
-        @keyframes animate {
-            0%{ transform: translateY(0) rotate(0deg); opacity: 1; border-radius: 0; }
-            100%{ transform: translateY(-1000px) rotate(720deg); opacity: 0; border-radius: 50%; }
-        }
+h1 {
+  font-size: 28px;
+  font-weight: 800;
+  color: #ff3366;
+  margin-bottom: 10px;
+}
 
-        /* The White Card Container */
-        .container {
-            background: rgba(255, 255, 255, 0.9);
-            padding: 40px;
-            border-radius: 20px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-            text-align: center;
-            max-width: 400px;
-            width: 90%;
-            position: relative;
-            z-index: 10;
-        }
+p {
+  font-size: 18px;
+  font-weight: 600;
+  color: #444;
+}
 
-        h1 {
-            font-family: 'Indie Flower', cursive; /* Handwritten style */
-            font-size: 2.5rem;
-            color: #ff4d6d;
-            margin-bottom: 10px;
-            line-height: 1.2;
-        }
+.buttons {
+  margin-top: 25px;
+  position: relative;
+  height: 80px;
+}
 
-        .gif-container img {
-            width: 100%;
-            max-width: 250px;
-            border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            margin-bottom: 20px;
-        }
+button {
+  padding: 12px 28px;
+  font-size: 18px;
+  font-weight: 700;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
 
-        .btn-container {
-            margin-top: 20px;
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            position: relative; /* Needed for No button calculation */
-        }
+#yesBtn {
+  background: #ff3366;
+  color: white;
+}
 
-        button {
-            padding: 12px 35px;
-            font-size: 1rem;
-            font-weight: bold;
-            border: none;
-            border-radius: 50px;
-            cursor: pointer;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-            letter-spacing: 1px;
-        }
+#yesBtn:hover {
+  transform: scale(1.1);
+}
 
-        #yesBtn {
-            background: linear-gradient(45deg, #ff4d6d, #ff8fa3);
-            color: white;
-            box-shadow: 0 5px 15px rgba(255, 77, 109, 0.4);
-        }
-
-        #yesBtn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 8px 20px rgba(255, 77, 109, 0.6);
-        }
-
-        #noBtn {
-            background: #ffffff;
-            color: #ff4d6d;
-            border: 2px solid #ff4d6d;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            position: relative; 
-        }
-
-        /* Success Message Styling */
-        #success-message {
-            display: none;
-            flex-direction: column;
-            align-items: center;
-        }
-        
-        #success-message p {
-            font-size: 1.5rem;
-            color: #ff4d6d;
-            font-family: 'Indie Flower', cursive;
-        }
-
-    </style>
+#noBtn {
+  background: #555;
+  color: white;
+  position: absolute;
+  left: 120px;
+  top: 0;
+  transition: left 0.4s ease, top 0.4s ease;
+}
+</style>
 </head>
+
 <body>
 
-    <div class="hearts">
-        <span></span><span></span><span></span><span></span><span></span><span></span>
+<div class="card" id="card">
+  <h1>Kutti mole 💕</h1>
+  <p>Will you be my Valentine? 💘</p>
+
+  <div class="buttons">
+    <button id="yesBtn" onclick="yesClicked()">Yes 😍</button>
+    <button id="noBtn" onmouseenter="moveNo()">No 🙈</button>
+  </div>
+</div>
+
+<script>
+function moveNo() {
+  const noBtn = document.getElementById("noBtn");
+  const maxX = 250;
+  const maxY = 40;
+
+  const x = Math.random() * maxX;
+  const y = Math.random() * maxY;
+
+  noBtn.style.left = x + "px";
+  noBtn.style.top = y + "px";
+}
+
+function yesClicked() {
+  document.body.innerHTML = `
+  <div style="
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+    background:#ffe4ec;
+    font-family:Poppins, sans-serif;
+    text-align:center;">
+    <div>
+      <h1 style="color:#ff3366; font-size:32px; font-weight:800;">
+        Yayyy 😘💖
+      </h1>
+      <p style="font-size:18px; font-weight:600;">
+        Come here… I want kisses 😘😘😘
+      </p>
+
+      <!-- GIPHY -->
+      <iframe src="https://giphy.com/embed/3o7abKhOpu0NwenH3O"
+        width="300"
+        height="300"
+        frameBorder="0"
+        allowFullScreen>
+      </iframe>
+
+      <p style="margin-top:10px; font-size:16px;">
+        Forever my Valentine 💑
+      </p>
     </div>
-
-    <div class="container">
-        
-        <div id="question-screen">
-            <div class="gif-container">
-                <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExbmM2ZDJqZmh2Zdmh2Zdmh2Zdmh2Zdmh2Zdmh2Zdmh2Zdmh2Zdmh2Zdmh2Zdmh2Zdmh2Zdmh2Zdmh2/0T0q7uJ7W9/giphy.gif" alt="Cute Bear Asking">
-            </div>
-            
-            <h1>Kutti male, will you be my Valentine?</h1>
-            
-            <div class="btn-container">
-                <button id="yesBtn">YES! ❤️</button>
-                <button id="noBtn">No</button>
-            </div>
-        </div>
-
-        <div id="success-message">
-            <div class="gif-container">
-                <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExbW5sMHZ5bW5sMHZ5bW5sMHZ5bW5sMHZ5bW5sMHZ5bW5sMHZ5bW5sMHZ5bW5sMHZ5bW5sMHZ5bW5sMHZ5/26BRv0ThflsKCqM6k/giphy.gif" alt="Happy Sticker">
-            </div>
-            <h1>Yaaaaay!</h1>
-            <p>I love you so much! See you soon! ❤️</p>
-        </div>
-
-    </div>
-
-    <script>
-        const yesBtn = document.getElementById('yesBtn');
-        const noBtn = document.getElementById('noBtn');
-        const questionScreen = document.getElementById('question-screen');
-        const successMessage = document.getElementById('success-message');
-
-        // Logic to make the NO button run away
-        function moveButton() {
-            // Get screen size
-            const width = window.innerWidth;
-            const height = window.innerHeight;
-
-            // Calculate new position (staying within screen)
-            // We use 'fixed' to position it relative to the whole screen
-            const newX = Math.random() * (width - noBtn.offsetWidth - 20);
-            const newY = Math.random() * (height - noBtn.offsetHeight - 20);
-
-            noBtn.style.position = 'fixed'; // Breaks it out of the card
-            noBtn.style.left = newX + 'px';
-            noBtn.style.top = newY + 'px';
-        }
-
-        // Desktop Hover
-        noBtn.addEventListener('mouseover', moveButton);
-        // Mobile Touch
-        noBtn.addEventListener('touchstart', moveButton);
-
-        // Yes Button Logic
-        yesBtn.addEventListener('click', () => {
-            questionScreen.style.display = 'none';
-            successMessage.style.display = 'flex';
-        });
-    </script>
+  </div>`;
+}
+</script>
 
 </body>
 </html>
