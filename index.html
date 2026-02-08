@@ -1,158 +1,145 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>My Valentine 💖</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My Kutti Ma</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #ffe6e6; /* Light pink background */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden; /* Prevents scrollbars when button moves */
+            flex-direction: column;
+            text-align: center;
+        }
 
-<style>
-body {
-  margin: 0;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: linear-gradient(135deg, #ff758c, #ff7eb3);
-  font-family: 'Poppins', sans-serif;
-}
+        h1 {
+            color: #ff4d4d;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
 
-.card {
-  background: #fff;
-  padding: 35px 40px;
-  border-radius: 22px;
-  text-align: center;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.25);
-}
+        .gif-container {
+            margin-bottom: 20px;
+        }
 
-h1 {
-  font-size: 28px;
-  font-weight: 800;
-  color: #ff3366;
-  margin-bottom: 10px;
-}
+        .gif-container img {
+            width: 200px;
+            border-radius: 15px;
+        }
 
-p {
-  font-size: 18px;
-  font-weight: 600;
-  color: #444;
-}
+        .btn-container {
+            position: relative;
+            width: 100%;
+            height: 100px; /* Space for buttons to move */
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
 
-.buttons {
-  margin-top: 25px;
-  position: relative;
-  height: 80px;
-}
+        button {
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative; /* Important for movement */
+            z-index: 10;
+        }
 
-button {
-  padding: 12px 28px;
-  font-size: 18px;
-  font-weight: 700;
-  border: none;
-  border-radius: 30px;
-  cursor: pointer;
-  transition: transform 0.2s ease;
-}
+        #yesBtn {
+            background-color: #28a745; /* Green */
+            color: white;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
 
-#yesBtn {
-  background: #ff3366;
-  color: white;
-}
+        #yesBtn:hover {
+            transform: scale(1.1);
+        }
 
-#yesBtn:hover {
-  transform: scale(1.1);
-}
+        #noBtn {
+            background-color: #dc3545; /* Red */
+            color: white;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
 
-#noBtn {
-  background: #555;
-  color: white;
-  position: absolute;
-  left: 120px;
-  top: 0;
-  transition: left 0.4s ease, top 0.4s ease;
-}
-</style>
+        /* The Hidden Success Message */
+        #success-message {
+            display: none; /* Hidden by default */
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        #success-message p {
+            font-size: 2rem;
+            color: #ff4d4d;
+            font-weight: bold;
+        }
+
+    </style>
 </head>
-
 <body>
 
-<div class="card" id="card">
-  <h1>Kutti mole 💕</h1>
-  <p>Will you be my Valentine? 💘</p>
-
-  <div class="buttons">
-    <button id="yesBtn" onclick="yesClicked()">Yes 😍</button>
-    <button id="noBtn" onmouseenter="moveNo()">No 🙈</button>
-  </div>
-</div>
-
-<script>
-const noBtn = document.getElementById("noBtn");
-
-function moveNo() {
-  const card = document.querySelector(".card");
-
-  const cardRect = card.getBoundingClientRect();
-  const btnRect = noBtn.getBoundingClientRect();
-
-  const maxX = cardRect.width - btnRect.width;
-  const maxY = cardRect.height - btnRect.height;
-
-  const x = Math.random() * maxX;
-  const y = Math.random() * maxY;
-
-  noBtn.style.left = x + "px";
-  noBtn.style.top = y + "px";
-}
-
-// desktop: runs away when cursor gets close
-document.addEventListener("mousemove", (e) => {
-  const rect = noBtn.getBoundingClientRect();
-
-  const distance = Math.hypot(
-    e.clientX - (rect.left + rect.width / 2),
-    e.clientY - (rect.top + rect.height / 2)
-  );
-
-  if (distance < 80) {
-    moveNo();
-  }
-});
-
-// mobile: runs away on touch
-noBtn.addEventListener("touchstart", moveNo);
-
-function yesClicked() {
-  document.body.innerHTML = `
-  <div style="
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    height:100vh;
-    background:#ffe4ec;
-    font-family:Poppins, sans-serif;
-    text-align:center;">
-    <div>
-      <h1 style="color:#ff3366; font-size:32px; font-weight:800;">
-        Yayyy 😘💖
-      </h1>
-      <p style="font-size:18px; font-weight:600;">
-        Come here… I want kisses 😘😘😘
-      </p>
-
-     <div style="width:100%;height:0;padding-bottom:100%;position:relative;">
-     <iframe src="https://giphy.com/embed/NZf3yEsco567UsZauR" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen>
-     </iframe>
-     </div>
-     <p><a href="https://giphy.com/gifs/pudgypenguins-love-you-u-NZf3yEsco567UsZauR">via GIPHY</a>
-     </p>
-
-      <p style="margin-top:10px;">Forever my Valentine 💑</p>
+    <div id="question-screen">
+        <div class="gif-container">
+            <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExbmM2ZDJqZmh2Zdmh2Zdmh2Zdmh2Zdmh2Zdmh2Zdmh2Zdmh2Zdmh2Zdmh2Zdmh2Zdmh2Zdmh2Zdmh2Zdmh2/0T0q7uJ7W9/giphy.gif" alt="Cute Bear Asking">
+        </div>
+        
+        <h1>Kutti ma, will you be my Valentine?</h1>
+        
+        <div class="btn-container">
+            <button id="yesBtn">Yes</button>
+            <button id="noBtn">No</button>
+        </div>
     </div>
-  </div>`;
-}
-</script>
+
+    <div id="success-message">
+        <div class="gif-container">
+            <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExbW5sMHZ5bW5sMHZ5bW5sMHZ5bW5sMHZ5bW5sMHZ5bW5sMHZ5bW5sMHZ5bW5sMHZ5bW5sMHZ5bW5sMHZ5bW5sMHZ5/26BRv0ThflsKCqM6k/giphy.gif" alt="Happy Sticker">
+        </div>
+        <p>Yaaay! I knew you would say Yes! ❤️</p>
+    </div>
+
+    <script>
+        const yesBtn = document.getElementById('yesBtn');
+        const noBtn = document.getElementById('noBtn');
+        const questionScreen = document.getElementById('question-screen');
+        const successMessage = document.getElementById('success-message');
+
+        // Logic to make the NO button run away
+        function moveButton() {
+            // Get the window size
+            const maxWidth = window.innerWidth - noBtn.offsetWidth;
+            const maxHeight = window.innerHeight - noBtn.offsetHeight;
+
+            // Calculate random positions
+            const randomX = Math.floor(Math.random() * maxWidth);
+            const randomY = Math.floor(Math.random() * maxHeight);
+
+            // Apply new position (using fixed position to let it roam freely)
+            noBtn.style.position = 'fixed';
+            noBtn.style.left = randomX + 'px';
+            noBtn.style.top = randomY + 'px';
+        }
+
+        // Trigger movement on mouse hover (Desktop)
+        noBtn.addEventListener('mouseover', moveButton);
+        
+        // Trigger movement on touch (Mobile) - acts as a "tap" attempt
+        noBtn.addEventListener('touchstart', moveButton);
+
+        // Logic for the YES button
+        yesBtn.addEventListener('click', () => {
+            questionScreen.style.display = 'none'; // Hide the question
+            successMessage.style.display = 'flex'; // Show the happy message
+        });
+    </script>
 
 </body>
 </html>
-
-
-
