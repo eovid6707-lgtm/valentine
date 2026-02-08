@@ -3,107 +3,172 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>For My Kutti Ma</title>
+    <title>For My Kutti Male</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&family=Poppins:wght@600&display=swap" rel="stylesheet">
+    
     <style>
+        /* Modern Gradient Background */
         body {
-            font-family: 'Arial', sans-serif;
-            background-color: #ffe6e6; /* Light pink background */
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(120deg, #f6d365 0%, #fda085 100%);
+            background: linear-gradient(to top, #fad0c4 0%, #ffd1ff 100%);
+            height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            margin: 0;
-            overflow: hidden; /* Prevents scrollbars when button moves */
-            flex-direction: column;
-            text-align: center;
-        }
-
-        h1 {
-            color: #ff4d4d;
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-        }
-
-        .gif-container {
-            margin-bottom: 20px;
-        }
-
-        .gif-container img {
-            width: 200px;
-            border-radius: 15px;
-        }
-
-        .btn-container {
+            overflow: hidden;
             position: relative;
-            width: 100%;
-            height: 100px; /* Space for buttons to move */
-            display: flex;
-            justify-content: center;
-            gap: 20px;
         }
 
-        button {
-            padding: 15px 30px;
-            font-size: 1.2rem;
-            border: none;
-            border-radius: 50px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            position: relative; /* Important for movement */
+        /* Floating Hearts Background Animation */
+        .hearts {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: -1;
+        }
+        
+        .hearts span {
+            position: absolute;
+            display: block;
+            width: 20px;
+            height: 20px;
+            background: rgba(255, 255, 255, 0.5);
+            animation: animate 25s linear infinite;
+            bottom: -150px;
+            clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 50% 75%, 18% 100%, 0% 38%);
+        }
+
+        .hearts span:nth-child(1){ left: 25%; width: 80px; height: 80px; animation-delay: 0s; }
+        .hearts span:nth-child(2){ left: 10%; width: 20px; height: 20px; animation-delay: 2s; }
+        .hearts span:nth-child(3){ left: 70%; width: 20px; height: 20px; animation-delay: 4s; }
+        .hearts span:nth-child(4){ left: 40%; width: 60px; height: 60px; animation-delay: 0s; background: rgba(255, 255, 255, 0.3); }
+        .hearts span:nth-child(5){ left: 65%; width: 20px; height: 20px; animation-delay: 0s; }
+        .hearts span:nth-child(6){ left: 75%; width: 110px; height: 110px; animation-delay: 3s; background: rgba(255, 255, 255, 0.4); }
+
+        @keyframes animate {
+            0%{ transform: translateY(0) rotate(0deg); opacity: 1; border-radius: 0; }
+            100%{ transform: translateY(-1000px) rotate(720deg); opacity: 0; border-radius: 50%; }
+        }
+
+        /* The White Card Container */
+        .container {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            text-align: center;
+            max-width: 400px;
+            width: 90%;
+            position: relative;
             z-index: 10;
         }
 
+        h1 {
+            font-family: 'Indie Flower', cursive; /* Handwritten style */
+            font-size: 2.5rem;
+            color: #ff4d6d;
+            margin-bottom: 10px;
+            line-height: 1.2;
+        }
+
+        .gif-container img {
+            width: 100%;
+            max-width: 250px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+
+        .btn-container {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            position: relative; /* Needed for No button calculation */
+        }
+
+        button {
+            padding: 12px 35px;
+            font-size: 1rem;
+            font-weight: bold;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            letter-spacing: 1px;
+        }
+
         #yesBtn {
-            background-color: #28a745; /* Green */
+            background: linear-gradient(45deg, #ff4d6d, #ff8fa3);
             color: white;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            box-shadow: 0 5px 15px rgba(255, 77, 109, 0.4);
         }
 
         #yesBtn:hover {
-            transform: scale(1.1);
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(255, 77, 109, 0.6);
         }
 
         #noBtn {
-            background-color: #dc3545; /* Red */
-            color: white;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            background: #ffffff;
+            color: #ff4d6d;
+            border: 2px solid #ff4d6d;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            position: relative; 
         }
 
-        /* The Hidden Success Message */
+        /* Success Message Styling */
         #success-message {
-            display: none; /* Hidden by default */
+            display: none;
             flex-direction: column;
             align-items: center;
         }
         
         #success-message p {
-            font-size: 2rem;
-            color: #ff4d4d;
-            font-weight: bold;
+            font-size: 1.5rem;
+            color: #ff4d6d;
+            font-family: 'Indie Flower', cursive;
         }
 
     </style>
 </head>
 <body>
 
-    <div id="question-screen">
-        <div class="gif-container">
-            <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExbmM2ZDJqZmh2Zdmh2Zdmh2Zdmh2Zdmh2Zdmh2Zdmh2Zdmh2Zdmh2Zdmh2Zdmh2Zdmh2Zdmh2Zdmh2Zdmh2/0T0q7uJ7W9/giphy.gif" alt="Cute Bear Asking">
-        </div>
-        
-        <h1>Kutti ma, will you be my Valentine?</h1>
-        
-        <div class="btn-container">
-            <button id="yesBtn">Yes</button>
-            <button id="noBtn">No</button>
-        </div>
+    <div class="hearts">
+        <span></span><span></span><span></span><span></span><span></span><span></span>
     </div>
 
-    <div id="success-message">
-        <div class="gif-container">
-            <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExbW5sMHZ5bW5sMHZ5bW5sMHZ5bW5sMHZ5bW5sMHZ5bW5sMHZ5bW5sMHZ5bW5sMHZ5bW5sMHZ5bW5sMHZ5bW5sMHZ5/26BRv0ThflsKCqM6k/giphy.gif" alt="Happy Sticker">
+    <div class="container">
+        
+        <div id="question-screen">
+            <div class="gif-container">
+                <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExbmM2ZDJqZmh2Zdmh2Zdmh2Zdmh2Zdmh2Zdmh2Zdmh2Zdmh2Zdmh2Zdmh2Zdmh2Zdmh2Zdmh2Zdmh2/0T0q7uJ7W9/giphy.gif" alt="Cute Bear Asking">
+            </div>
+            
+            <h1>Kutti male, will you be my Valentine?</h1>
+            
+            <div class="btn-container">
+                <button id="yesBtn">YES! ❤️</button>
+                <button id="noBtn">No</button>
+            </div>
         </div>
-        <p>Yaaay! I knew you would say Yes! ❤️</p>
+
+        <div id="success-message">
+            <div class="gif-container">
+                <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExbW5sMHZ5bW5sMHZ5bW5sMHZ5bW5sMHZ5bW5sMHZ5bW5sMHZ5bW5sMHZ5bW5sMHZ5bW5sMHZ5bW5sMHZ5/26BRv0ThflsKCqM6k/giphy.gif" alt="Happy Sticker">
+            </div>
+            <h1>Yaaaaay!</h1>
+            <p>I love you so much! See you soon! ❤️</p>
+        </div>
+
     </div>
 
     <script>
@@ -114,30 +179,29 @@
 
         // Logic to make the NO button run away
         function moveButton() {
-            // Get the window size
-            const maxWidth = window.innerWidth - noBtn.offsetWidth;
-            const maxHeight = window.innerHeight - noBtn.offsetHeight;
+            // Get screen size
+            const width = window.innerWidth;
+            const height = window.innerHeight;
 
-            // Calculate random positions
-            const randomX = Math.floor(Math.random() * maxWidth);
-            const randomY = Math.floor(Math.random() * maxHeight);
+            // Calculate new position (staying within screen)
+            // We use 'fixed' to position it relative to the whole screen
+            const newX = Math.random() * (width - noBtn.offsetWidth - 20);
+            const newY = Math.random() * (height - noBtn.offsetHeight - 20);
 
-            // Apply new position (using fixed position to let it roam freely)
-            noBtn.style.position = 'fixed';
-            noBtn.style.left = randomX + 'px';
-            noBtn.style.top = randomY + 'px';
+            noBtn.style.position = 'fixed'; // Breaks it out of the card
+            noBtn.style.left = newX + 'px';
+            noBtn.style.top = newY + 'px';
         }
 
-        // Trigger movement on mouse hover (Desktop)
+        // Desktop Hover
         noBtn.addEventListener('mouseover', moveButton);
-        
-        // Trigger movement on touch (Mobile) - acts as a "tap" attempt
+        // Mobile Touch
         noBtn.addEventListener('touchstart', moveButton);
 
-        // Logic for the YES button
+        // Yes Button Logic
         yesBtn.addEventListener('click', () => {
-            questionScreen.style.display = 'none'; // Hide the question
-            successMessage.style.display = 'flex'; // Show the happy message
+            questionScreen.style.display = 'none';
+            successMessage.style.display = 'flex';
         });
     </script>
 
